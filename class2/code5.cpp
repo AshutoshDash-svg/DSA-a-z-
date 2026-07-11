@@ -29,7 +29,7 @@ void unionintersection(vector<int>& arr1,
         
             i++;
             j++;
-       }
+       } 
     }
 
        while(i<arr1.size()){
@@ -45,7 +45,7 @@ void unionintersection(vector<int>& arr1,
     }
 
 int main(){
-    vector<int> arr1={1,2,3,4,5},arr2={1,2,3};
+    vector<int> arr1={1,2,3,3,4,5},arr2={1,2,3,3};
     vector<int> uni;
     vector<int> inter;
     unionintersection(arr1,arr2,uni,inter);
