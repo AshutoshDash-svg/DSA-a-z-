@@ -1,4 +1,4 @@
-//the numbwe who appear less tthen two times(brutforce)
+//the number who appear less tthen two times(brutforce)
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -24,7 +24,7 @@ int main(){
 }
 
 
-//using hash map(better approach
+//using hash map(better approach)
 #include<iostream>
 #include<vector>
 #include<unordered_map>

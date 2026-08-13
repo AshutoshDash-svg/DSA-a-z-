@@ -1,4 +1,4 @@
-//largest eliment of the array
+//largest element of the array
 #include<iostream>
 #include<vector>
 using namespace std;
