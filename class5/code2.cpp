@@ -2,12 +2,12 @@
 #include<vector>
 using namespace std;
 void diffonezero(vector<int>& arr){
-    int right=0;
-    int left=arr.size()-1;
+    int left=0;
+    int right=arr.size()-1;
     while(left<right){
-        while(left<arr[right] && arr[left]==1)
+        while(left<right && arr[left]==0)
         left++;
-        while(left<arr[right] && arr[right]==0)
+        while(left<right && arr[right]==1)
         right--;
         if(left<right){
             swap(arr[left],arr[right]);
@@ -18,5 +18,8 @@ void diffonezero(vector<int>& arr){
 }
 int main(){
     vector<int> arr={1,0,1,0,1,1,1,0,1,1,0};
-    cout<<"",diffonezero(arr);
+    diffonezero(arr);
+    for(int x:arr){
+        cout<<x<<" ";
+    }
 }

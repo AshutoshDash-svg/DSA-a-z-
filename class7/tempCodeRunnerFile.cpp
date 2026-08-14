@@ -1,4 +1,4 @@
-//optimal approach
+//optimal approach(dutch national flag algorithm)
 #include<iostream>
 #include<vector>
 using namespace std;
