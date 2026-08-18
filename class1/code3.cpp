@@ -5,7 +5,7 @@ using namespace std;
 int issorted(vector<int> a){
     for(int i=1;i<a.size();i++){
         if(a[i]>=a[i-1]){
-
+            
         }else{
             return false;
         }
