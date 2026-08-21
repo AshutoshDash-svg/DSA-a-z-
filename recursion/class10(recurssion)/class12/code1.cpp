@@ -105,3 +105,30 @@ int main() {
 
     return 0;
 }
+
+//leetcode -:125(A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing
+// all non-alphanumeric characters, it reads the same forward and backward.
+// Alphanumeric characters include letters and numbers.)
+class Solution {
+public:
+    bool check(string &s, int i, int j) {
+        if (i >= j) {
+            return true;
+        }
+        if (!isalnum(s[i])) {
+            return check(s, i + 1, j);
+        }
+        if (!isalnum(s[j])) {
+            return check(s, i, j - 1);
+        }
+        if (tolower(s[i]) != tolower(s[j])) {
+            return false;
+        }
+        return check(s, i + 1, j - 1);
+    }
+    bool isPalindrome(string s) {
+        int i = 0;
+        int j = s.length() - 1;
+        return check(s, i, j);
+    }
+};
