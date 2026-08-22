@@ -28,6 +28,12 @@ int main(){
     return 0;
 }
 
+// Complexity
+// Best case: O(n²)
+// Average case: O(n²)
+// Worst case: O(n²)
+// Space: O(1) → extra array nahi ban raha
+// Swaps: Maximum n-1
 
 //concept
 // i → position
