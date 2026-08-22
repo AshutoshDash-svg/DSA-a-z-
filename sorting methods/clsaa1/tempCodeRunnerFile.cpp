@@ -1,47 +1,4 @@
-//selection sort
-#include<iostream>
-using namespace std;
-void selection_sort(int arr[],int n){
-    for(int i=0;i<n-1;i++){
-        int mini=i;
-        for(int j=i+1;j<n;j++){
-            if(arr[j]<arr[mini]){
-                mini=j;       
-             }
-        }
-        int temp=arr[mini];
-        arr[mini]=arr[i];
-        arr[i]=temp;
-    }
-}
-int main(){
-    int n;
-    cin>>n;
-    int arr[n];
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    selection_sort(arr,n);
-    for(int i=0;i<n;i++){
-        cout<<arr[i]<<" ";
-    }
-    return 0;
-}
-
-
-//concept
-// i → position
-
-// i batata hai kis position par smallest element rakhna hai.
-
-// j → searching
-
-// j baaki array mein smallest element search karta hai.
-
-// mini → smallest ka index
-
-// mini store karta hai ki abhi tak smallest element kis index par hai.
-// Starting Array
+Starting Array
 // Index:   0   1   2   3   4
 //          ↓   ↓   ↓   ↓   ↓
 // Array:  50  10  30  20  40
