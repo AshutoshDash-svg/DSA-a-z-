@@ -10,7 +10,6 @@ void insertionsort(vector<int>& arr ,int n){
             j--;
         }
     }
-
 }
 int main(){
     int n;
