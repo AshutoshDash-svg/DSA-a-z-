@@ -34,7 +34,7 @@ node* removetail(node* head){
     return head;
     }
 
-node* removekthelement(node* head,int k){
+node* removekthpositionelement(node* head,int k){
     if(head==NULL){
         return head;
     }
@@ -50,6 +50,30 @@ node* removekthelement(node* head,int k){
     while(temp!=NULL){
         cnt++;
         if(cnt==k){
+            prev->next=prev->next->next;
+            free(temp);
+            break;
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
+}
+
+node* removeelement(node* head,int el){
+    if(head==NULL){
+        return head;
+    }
+    if(head->data==el){
+        node* temp=head;
+        head=head->next;
+        free(temp);
+        return head;
+    }
+    node* temp=head;
+    node* prev=NULL;
+    while(temp!=NULL){
+        if(temp->data==el){
             prev->next=prev->next->next;
             free(temp);
             break;
@@ -98,9 +122,13 @@ int main(){
     cout<<"after deleting the tail of the linked list: ";
     print(head);
 
-    originalhead=removekthelement(originalhead,3);
+    originalhead=removekthpositionelement(originalhead,3);
     cout<<"after removeing the kth eliment: ";
     print(originalhead);
 
+
+    originalhead=removeelement(originalhead,6);
+    cout<<"after remove the element: ";
+    print(originalhead);
     return 0; 
 }
