@@ -33,6 +33,32 @@ node* removetail(node* head){
     temp->next=nullptr;
     return head;
     }
+
+node* removekthelement(node* head,int k){
+    if(head==NULL){
+        return head;
+    }
+    if(k==1){
+        node* temp=head;
+        head=head->next;
+        free(temp);
+        return head;
+    }
+    int cnt=0;
+    node* temp=head;
+    node* prev=NULL;
+    while(temp!=NULL){
+        cnt++;
+        if(cnt==k){
+            prev->next=prev->next->next;
+            free(temp);
+            break;
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
+}
 int main(){
     vector<int> arr={2,4,6,8,10};
     node* head=new node{arr[0],NULL};
@@ -51,6 +77,10 @@ int main(){
 
     head=removetail(head);
     cout<<"after deleting the tail of the linked list: ";
+    print(head);
+
+    head=removekthelement(head,3);
+    cout<<"after removeing the kth eliment: ";
     print(head);
 
     return 0; 
