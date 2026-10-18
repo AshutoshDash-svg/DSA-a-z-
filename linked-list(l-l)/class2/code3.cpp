@@ -54,6 +54,26 @@ node* insertionattheposition(node* head,int el,int k){
         }
         return head;
     }
+
+
+node* insertionabeforthevalue(node* head,int el,int val){
+    if(head==NULL){
+            return NULL;
+        }
+    if(head->data==val){
+        return new node{el,head};
+    }
+    node* temp=head;
+    while(temp->next!=NULL){
+        if (temp->next->data==val){
+            node* newnode=new node{el,temp->next};
+            temp->next=newnode;
+            break;
+            }
+            temp=temp->next;
+        }
+        return head;
+    }
 int main(){
     vector<int> arr={2,4,6,8,10};
     node* head=new node{arr[0],NULL};
@@ -76,5 +96,9 @@ int main(){
 
     head=insertionattheposition(head,20,3);
     cout<<"after insertion of the element at the given position: ";
+    print(head);
+
+    head=insertionabeforthevalue(head,40,20);
+    cout<<"after insertion of the element in before the value given: ";
     print(head);
 }
