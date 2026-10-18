@@ -28,6 +28,32 @@ node* insertionattailofll(node* head,int val){
         temp->next=newnode;
         return head;
 }
+
+
+node* insertionattheposition(node* head,int el,int k){
+    if(head==NULL){
+        if(k==1){
+            return new node{el,nullptr};
+        }else{
+            return head;
+        }
+    }
+    if(k==1){
+        return new node{el,head};
+    }
+    int cnt=0;
+    node* temp=head;
+    while(temp!=NULL){
+        cnt++;
+        if (cnt==(k-1)){
+            node* newnode=new node{el,temp->next};
+            temp->next=newnode;
+            break;
+            }
+            temp=temp->next;
+        }
+        return head;
+    }
 int main(){
     vector<int> arr={2,4,6,8,10};
     node* head=new node{arr[0],NULL};
@@ -46,5 +72,9 @@ int main(){
 
     head=insertionattailofll(head,100);
     cout<<"after insertion at the tail: ";
+    print(head);
+
+    head=insertionattheposition(head,20,3);
+    cout<<"after insertion of the element at the given position: ";
     print(head);
 }
