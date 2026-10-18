@@ -59,6 +59,24 @@ node* removekthelement(node* head,int k){
     }
     return head;
 }
+// Create a separate copy of Linked List
+node* copyList(node* head) {
+    if (head == nullptr) {
+        return nullptr;
+    }
+
+    node* newHead = new node{head->data, nullptr};
+    node* current = newHead;
+    head = head->next;
+
+    while (head != nullptr) {
+        current->next = new node{head->data, nullptr};
+        current = current->next;
+        head = head->next;
+    }
+
+    return newHead;
+}
 int main(){
     vector<int> arr={2,4,6,8,10};
     node* head=new node{arr[0],NULL};
@@ -67,6 +85,7 @@ int main(){
         current->next = new node{arr[i], NULL};
         current = current->next;
     }
+    node* originalhead=copyList(head);
     cout << "Original Linked List: ";
     print(head);
 
@@ -79,9 +98,9 @@ int main(){
     cout<<"after deleting the tail of the linked list: ";
     print(head);
 
-    head=removekthelement(head,3);
+    originalhead=removekthelement(originalhead,3);
     cout<<"after removeing the kth eliment: ";
-    print(head);
+    print(originalhead);
 
     return 0; 
 }
