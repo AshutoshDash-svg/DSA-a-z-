@@ -52,14 +52,67 @@ node* deleteheadofdll(node* head){
     return head;
 
 }
-int main(){
-    vector<int> arr={12,5,8,7};
-    node* head=convertarr2dll(arr);
-    cout<<"bafore deleting anything: ";
-    print(head);
 
-    head=deleteheadofdll(head);
-    cout<<"after deleting the head of the dll: ";
-    print(head);
+//delete the tail of a double linked list
+node* deletetail(node* head){
+    if(head==NULL||head->next==NULL){
+        return NULL;
+    }
+    node* tail=head;
+    while(tail->next!=NULL){
+        tail=tail->next;
+    }
+    node* newtail=tail->prev;
+    newtail->next=nullptr;
+    tail->prev=nullptr;
+    delete tail;
+    return head;
+}
+// Create a separate copy of Linked List
+
+node* copyList(node* head) {
+    if (head == nullptr) {
+        return nullptr;
+    }
+
+    node* newHead = new node(head->data);
+    node* current = newHead;
+    head = head->next;
+
+    while (head != nullptr) {
+        node* temp = new node(head->data);
+
+        current->next = temp;
+        temp->prev = current;
+
+        current = temp;
+        head = head->next;
+    }
+
+    return newHead;
+}
+
+
+int main() {
+    vector<int> arr = {12, 5, 8, 7};
+
+    node* head = convertarr2dll(arr);
+    cout << "Original DLL: ";
+    print(head);      // 12 5 8 7
+
+
+    // Head deletion ke liye separate copy
+    node* headCopy = copyList(head);
+    headCopy = deleteheadofdll(headCopy);
+    cout << "After deleting head: ";
+    print(headCopy);  // 5 8 7
+
+    // Tail deletion ke liye original se fresh copy
+    node* tailCopy = copyList(head);
+    tailCopy = deletetail(tailCopy);
+    cout << "After deleting tail: ";
+    print(tailCopy);  // 12 5 8
+
+
     return 0;
 }
