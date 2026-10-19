@@ -35,10 +35,31 @@ void print(node* head){
         cout<<head->data<<" ";
         head=head->next;
     }
+    cout<<endl;
+}
+
+// dellete of the head of a double linked list
+node* deleteheadofdll(node* head){
+    if(head==NULL||head->next==NULL){
+        return NULL;
+    }
+    node* prev=head;
+    head=head->next;
+
+    head->prev=nullptr;
+    prev->next=nullptr;
+    delete prev;
+    return head;
+
 }
 int main(){
     vector<int> arr={12,5,8,7};
     node* head=convertarr2dll(arr);
+    cout<<"bafore deleting anything: ";
+    print(head);
+
+    head=deleteheadofdll(head);
+    cout<<"after deleting the head of the dll: ";
     print(head);
     return 0;
 }
