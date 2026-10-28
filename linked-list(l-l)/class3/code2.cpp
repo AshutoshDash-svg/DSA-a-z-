@@ -63,6 +63,44 @@ node* insertbefortail(node* head,int val){
 }
 
 
+//inser the lement befor the kth position
+node* insertbeforkthelement(node* head,int k,int val){
+    if(k <= 0) {
+        return head;
+    }
+
+    if(head == nullptr) {
+        if(k == 1) {
+            return new node(val);
+        }
+        cout << "The given position is not there";
+        return head;
+    }
+
+    if(k==1){
+        return insertbeforhead(head,val);
+    }
+    node* temp=head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        if(count==k){
+        break;
+    }
+    temp=temp->next;
+    }
+    if(temp == NULL) {
+    cout << "The given position is not there\n";
+    return head;
+}
+    node* back=temp->prev;
+    node* newnode=new node(val,temp,back);
+    back->next=newnode;
+    temp->prev=newnode;
+    return head;
+}
+
+
 // Create a separate copy of Linked List
 
 node* copyList(node* head) {
@@ -104,7 +142,12 @@ int main() {
     print(newcopy);
     //insert the new element before the tail of the dll
     node* newcopy1=copyList(head);
-    newcopy=insertbefortail(newcopy1,9);
+    newcopy1=insertbefortail(newcopy1,9);
     cout<<"after insertion the element befor the tail of the dll: ";
     print(newcopy1);
+    //insert the new element befor the kth position
+    node* newcopy2=copyList(head);
+    newcopy2=insertbeforkthelement(newcopy2,8,10);
+    cout<<"after insert the elemnt before the kth position of the linked list: ";
+    print(newcopy2);
 }
