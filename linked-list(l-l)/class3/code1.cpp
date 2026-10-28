@@ -68,6 +68,40 @@ node* deletetail(node* head){
     delete tail;
     return head;
 }
+
+
+//dllete the kth element of the double linked list
+node* remoovekthelement(node*head, int k){
+    if(head==NULL){
+        return NULL;
+    }
+    int cnt=0;
+    node* temp=head;
+    while(temp!=NULL){
+        cnt++;
+        if(cnt==k){
+            break;
+        }
+        temp=temp->next;
+    }
+    node* back=temp->prev;
+    node* front=temp->next;
+    if(back==NULL && front==NULL){
+        return NULL;
+    }
+    else if(back==NULL){
+        return deleteheadofdll(head);
+    }
+    else if(front==NULL){
+        return deletetail(head);
+    }
+    back->next=front;
+    front->prev=back;
+    temp->next=NULL;
+    temp->prev=NULL;
+    delete temp;
+    return head;
+}
 // Create a separate copy of Linked List
 
 node* copyList(node* head) {
@@ -112,6 +146,12 @@ int main() {
     tailCopy = deletetail(tailCopy);
     cout << "After deleting tail: ";
     print(tailCopy);  // 12 5 8
+    
+    //delete the kth element from the dll
+    node* newcopy=copyList(head);
+    newcopy=remoovekthelement(newcopy,3);
+    cout<<"after the deletion of the kth element ";
+    print(newcopy);
 
 
     return 0;
