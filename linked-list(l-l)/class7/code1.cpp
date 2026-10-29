@@ -49,44 +49,31 @@ node* sortlist(node* head){
 node* buildlist(const vector<int>& values) {
     node* dummy = new node(-1);
     node* tail = dummy;
-
     for (int value : values) {
         tail->next = new node(value);
         tail = tail->next;
     }
-
     node* head = dummy->next;
     delete dummy;
-
     return head;
 }
-
 void printlist(node* head) {
     while (head != nullptr) {
         cout << head->data;
-
         if (head->next != nullptr) {
             cout << " -> ";
         }
-
         head = head->next;
     }
-
     cout << " -> NULL" << endl;
 }
-
 int main() {
     vector<int> values = {1, 2, 0, 1, 2, 0, 1};
-
     node* head = buildlist(values);
-
     cout << "Original Linked List: ";
     printlist(head);
-
     head = sortlist(head);
-
     cout << "Sorted Linked List: ";
     printlist(head);
-
     return 0;
 }
