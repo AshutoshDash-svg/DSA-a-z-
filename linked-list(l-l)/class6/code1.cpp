@@ -62,7 +62,7 @@ node* buildlist(const vector<int>& values){
     delete dumy;
     return head;
 }
-void* printlist(node* head){
+void printlist(node* head){
     while(head!=nullptr){
         cout<<head->data;
     if(head->next!=nullptr){
@@ -82,3 +82,22 @@ int main() {
     printlist(head);
     return 0;
 }
+
+
+// Phase 1: Traverse
+
+// Original linked list ko read karo.
+
+// Phase 2: Store
+
+// evenvalues = [2, 4, 6]
+
+// oddvalues = [1, 3, 5]
+
+
+// Phase 3: Overwrite
+
+// Pehle even values, phir odd values nodes ke data mein daalo.
+
+// FINAL RESULT
+// 2 → 4 → 6 → 1 → 3 → 5
