@@ -1,0 +1,1 @@
+//check whether a linkedlist is palindrome or not(optimal approach(using the reverse of the linked list))
